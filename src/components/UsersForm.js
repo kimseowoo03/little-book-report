@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from '../components/UsersForm.module.css'
 
-const UsersForm = (props) => {
+const UsersForm = ({ onAdd }) => {
 
   const [titleValue, setTitleValue] = useState('');
   const [authorValue, setAuthorValue] = useState('');
@@ -9,21 +9,10 @@ const UsersForm = (props) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-
-     fetch(
-      "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          title: titleValue,
-          author: authorValue,
-          review: reviewValue
-        }),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-
+    onAdd(titleValue, authorValue, reviewValue);
+    setTitleValue('');
+    setAuthorValue('');
+    setReviewValue('');
   };
 
 

@@ -1,3 +1,7 @@
-.ul{
-  
+.list_box {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.ul {
+  list-style: none;
 }
