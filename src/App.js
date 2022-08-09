@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css'
+import Header from './components/UI/Header';
 import UsersForm from './components/UsersForm';
 
 function App() {
   return (
-    <React.Fragment>
-      <section>
+    <div >
+      <header>
+        <Header />
+      </header>
+      <main>
         <UsersForm />
-      </section>
-      <section>
-        {/*list출력 */}
-      </section>
-    </React.Fragment>
+      </main>
+    </div>
   );
 }
 
