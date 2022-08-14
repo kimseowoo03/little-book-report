@@ -26,36 +26,13 @@ function App() {
           review: data[key].review,
         });
       }
+      console.log(reviewData)
       setReviewValue(reviewData);
     } catch (error) {
       const statusCode = error.response.status;
       const statusText = error.response.statusText;
       console.log(` GET ERR >> ${statusCode} / ${statusText}`);
     }
-
-    // fetch API 방식 GET
-    // try{
-    //   const response = await fetch(url);
-    //   if (!response.ok) {
-    //     throw new Error('에러가 발생했습니다.');
-    //   }
-    //   const data = await response.json();
-    //   console.log(data);
-  
-    //   const reviewData = [];
-  
-    //   for (const key in data) {
-    //     reviewData.push({
-    //       id: key,
-    //       title: data[key].title,
-    //       author: data[key].author,
-    //       review: data[key].review,
-    //     });
-    //   }
-    //   setReviewValue(reviewData);
-    // } catch(error) {
-    //   setError(error.message);
-    // }
 
   }, [axios]);
 
@@ -65,11 +42,19 @@ function App() {
 
   const onAdd = async (title, author, review) => {
     try {
-      await axios.post(url, {
-        title: title,
-        author: author,
-        review: review,
+      const response = await axios.post(url, {
+        title,
+        author,
+        review,
       });  
+
+       setReviewValue((prev) => [...prev, {
+        id: response.data.name,
+        title,
+        author,
+        review
+      }]);
+
     } catch (error) {
       const errMessage = error.message;
       const errName = error.name;
@@ -90,7 +75,7 @@ function App() {
     //     },
     //   }
     // );
-    await responseReviewList(); 
+    // await responseReviewList(); 
   };
 
   return (
