@@ -8,7 +8,7 @@ function App() {
   const [reviewValue, setReviewValue] = useState([]);
   const [error, setError] = useState(null);
 
-  const url = 'https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json'
+  const url ="https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json";
 
   const responseReviewList = useCallback(async () => {
     setError(null);
@@ -25,59 +25,31 @@ function App() {
           review: data[key].review,
         });
       }
-      console.log(reviewData)
       setReviewValue(reviewData);
     } catch (error) {
       const statusCode = error.response.status;
       const statusText = error.response.statusText;
       console.log(` GET ERR >> ${statusCode} / ${statusText}`);
     }
-
   }, []);
 
   useEffect(() => {
     responseReviewList();
   }, [responseReviewList]);
 
-  const onAdd = async (title, author, review) => {
-    try{
-     const response = await fetch(
-      url,
-      {
-         method: "POST",
-         body: JSON.stringify({
-          title: title,
-          author: author,
-          review: review,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=utf-8",
-        },
-      }
-    );
-    const data = await response.json();
-    setReviewValue((prev) => [...prev, {
-      id: data.name,
-      title,
-      author,
-      review
-    }])
-    } catch (error) {
-        const errMessage = error.message;
-        const errName = error.name;
-        console.log(` POST ERR >> ${errMessage} / ${errName}`);
-    }
+  const onAdd = (createReview) => {
+    setReviewValue((prev) => [...prev, createReview])
   };
 
   return (
-    <div >
+    <div>
       <header>
         <Header />
       </header>
       <main>
         <UsersForm onAdd={onAdd} />
         {error}
-        <UsersReviewList reviewValue={reviewValue}/>
+        <UsersReviewList reviewValue={reviewValue} />
       </main>
     </div>
   );

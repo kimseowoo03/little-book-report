@@ -7,9 +7,36 @@ const UsersForm = ({ onAdd }) => {
   const [authorValue, setAuthorValue] = useState('');
   const [reviewValue, setReviewValue] = useState('');
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
-    onAdd(titleValue, authorValue, reviewValue);
+    try {
+      const response = await fetch(
+        "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            title: titleValue,
+            author: authorValue,
+            review: reviewValue,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=utf-8",
+          },
+        }
+      );
+      const data = await response.json();
+      const createReview = {
+        id: data.name,
+        title: titleValue,
+        author: authorValue,
+        review: reviewValue,
+      };
+      onAdd(createReview);
+    } catch (error) {
+      const errMessage = error.message;
+      const errName = error.name;
+      console.log(` POST ERR >> ${errMessage} / ${errName}`);
+    }
     setTitleValue('');
     setAuthorValue('');
     setReviewValue('');
