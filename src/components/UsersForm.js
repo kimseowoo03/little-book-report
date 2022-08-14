@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from '../components/UsersForm.module.css'
+import useFetch from "../hooks/useFetch";
 
 const UsersForm = ({ onAdd }) => {
 
@@ -7,12 +8,38 @@ const UsersForm = ({ onAdd }) => {
   const [authorValue, setAuthorValue] = useState('');
   const [reviewValue, setReviewValue] = useState('');
 
+  const {sendRequest} = useFetch();
+
+  const responseData = (data) => {
+    const responseDataList = {
+      id: data.name,
+      title: titleValue,
+      author: authorValue,
+      review: reviewValue
+    }
+    onAdd(responseDataList);
+  }
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    onAdd(titleValue, authorValue, reviewValue);
-    setTitleValue('');
-    setAuthorValue('');
-    setReviewValue('');
+    sendRequest(
+      {
+        url: "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=utf-8",
+        },
+        body: {
+          title: titleValue,
+          author: authorValue,
+          review: reviewValue,
+        },
+      },
+      responseData
+    );
+    setTitleValue("");
+    setAuthorValue("");
+    setReviewValue("");
   };
 
 
