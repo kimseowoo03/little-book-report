@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from '../components/UsersForm.module.css'
+import useFetch from "../hooks/useFetch";
 
 const UsersForm = ({ onAdd }) => {
 
@@ -7,39 +8,38 @@ const UsersForm = ({ onAdd }) => {
   const [authorValue, setAuthorValue] = useState('');
   const [reviewValue, setReviewValue] = useState('');
 
-  const onSubmitHandler = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(
-        "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            title: titleValue,
-            author: authorValue,
-            review: reviewValue,
-          }),
-          headers: {
-            "Content-type": "application/json; charset=utf-8",
-          },
-        }
-      );
-      const data = await response.json();
-      const createReview = {
-        id: data.name,
-        title: titleValue,
-        author: authorValue,
-        review: reviewValue,
-      };
-      onAdd(createReview);
-    } catch (error) {
-      const errMessage = error.message;
-      const errName = error.name;
-      console.log(` POST ERR >> ${errMessage} / ${errName}`);
+  const {sendRequest} = useFetch();
+
+  const responseData = (data) => {
+    const responseDataList = {
+      id: data.name,
+      title: titleValue,
+      author: authorValue,
+      review: reviewValue
     }
-    setTitleValue('');
-    setAuthorValue('');
-    setReviewValue('');
+    onAdd(responseDataList);
+  }
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    sendRequest(
+      {
+        url: "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=utf-8",
+        },
+        body: {
+          title: titleValue,
+          author: authorValue,
+          review: reviewValue,
+        },
+      },
+      responseData
+    );
+    setTitleValue("");
+    setAuthorValue("");
+    setReviewValue("");
   };
 
 
