@@ -6,7 +6,7 @@ const UsersReviewList = ({reviewValue}) => {
   return(
     <div className={classes.list_box}>
       <ul className={classes.ul}>
-        {reviewValue.map( review => <Review key={review.id} review={review} />)}
+        {/* {reviewValue.map( review => <Review key={review.id} review={review} />)} */}
       </ul>
     </div>
   )
