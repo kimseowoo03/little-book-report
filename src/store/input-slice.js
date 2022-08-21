@@ -7,7 +7,13 @@ const inputSlice = createSlice({
   },
   reducers: {
     addToReviewList(state, action) {
-      console.log(action.payload)
+      const newReviewList = action.payload;
+      state.reviewList.push({
+        id: Math.random().toString(36).substring(2, 8),
+        title: newReviewList.titleValue,
+        author: newReviewList.authorValue,
+        review: newReviewList.reviewValue
+      })
     }
   }
 });

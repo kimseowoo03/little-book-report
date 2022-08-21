@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import classes from "../components/UsersForm.module.css";
 
@@ -9,6 +9,7 @@ import { inputAction } from "../store/input-slice";
 
 const UsersForm = ( ) => {
   const dispatch = useDispatch();
+  const reviewList = useSelector(state => state.input.reviewList)
 
   const {
     inputValue: titleValue,
@@ -58,9 +59,10 @@ const UsersForm = ( ) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    dispatch(inputAction.addToReviewList({
+     dispatch(inputAction.addToReviewList({
       titleValue, authorValue, reviewValue
-    }))
+    }));
+    console.log(reviewList)
     // sendRequest(
     //   {
     //     url: "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
