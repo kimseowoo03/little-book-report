@@ -55,14 +55,5 @@ export const sendReviewList = (reviewList) => {
         })
       );
     }
-
-    // sendRequest().catch((error) => {
-    //   dispatch(
-    //     uiActions.errorManagement({
-    //       title: "실패",
-    //       message: "실패!!!",
-    //     })
-    //   );
-    // });
   }
 }

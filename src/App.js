@@ -8,7 +8,6 @@ import Notification from "./components/UI/Notification";
 import { useSelector, useDispatch } from "react-redux";
 
 import { fetchReviewList, sendReviewList } from "./store/input-actions";
-// import useFetch from './hooks/useFetch';
 
 let ininitial = true;
 function App() {
