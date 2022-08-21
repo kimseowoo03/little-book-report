@@ -6,6 +6,9 @@ const inputSlice = createSlice({
     reviewList: []
   },
   reducers: {
+    replaceReviewList(state, action) {
+      state.reviewList = action.payload;
+    },
     addToReviewList(state, action) {
       const newReviewList = action.payload;
       state.reviewList.push({

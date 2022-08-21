@@ -45,39 +45,12 @@ const UsersForm = ( ) => {
     formValueIsvalid= false;
   }
 
-  // const { sendRequest } = useFetch();
-
-  // const responseData = (data) => {
-  //   const responseDataList = {
-  //     id: data.name,
-  //     title: titleInputValue,
-  //     author: authorInputValue,
-  //     review: reviewInputValue,
-  //   };
-  //   onAdd(responseDataList);
-  // };
-
   const onSubmitHandler = (event) => {
     event.preventDefault();
      dispatch(inputAction.addToReviewList({
       titleValue, authorValue, reviewValue
     }));
     console.log(reviewList)
-    // sendRequest(
-    //   {
-    //     url: "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json; charset=utf-8",
-    //     },
-    //     body: {
-    //       title: titleInputValue,
-    //       author: authorInputValue,
-    //       review: reviewInputValue,
-    //     },
-    //   },
-    //   responseData
-    // );
     titleResetData();
     authorResetData();
     reviewResetData();
