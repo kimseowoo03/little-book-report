@@ -1,12 +1,18 @@
 import React from "react";
-import classes from "../components/UsersForm.module.css";
-import useFetch from "../hooks/useFetch";
-import useInput from "../hooks/useInput";
+import { useDispatch, useSelector } from "react-redux";
 
-const UsersForm = ({ onAdd }) => {
+import classes from "../components/UsersForm.module.css";
+
+// import useFetch from "../hooks/useFetch";
+import useInput from "../hooks/useInput";
+import { inputAction } from "../store/input-slice";
+
+const UsersForm = ( ) => {
+  const dispatch = useDispatch();
+  const reviewList = useSelector(state => state.input.reviewList)
 
   const {
-    inputValue: titleInputValue,
+    inputValue: titleValue,
     inputValueIsvalid: titleInputValueIsvalid,
     inputFormIsvalid: titleFormIsvalid,
     onChangeHandler: titleOnChangeHandler,
@@ -15,7 +21,7 @@ const UsersForm = ({ onAdd }) => {
   } = useInput(value => value.trim() === '');
 
   const {
-    inputValue: authorInputValue,
+    inputValue: authorValue,
     inputValueIsvalid: authorInputValueIsvalid,
     inputFormIsvalid: authorFormIsvalid,
     onChangeHandler: authorOnChangeHandler,
@@ -24,7 +30,7 @@ const UsersForm = ({ onAdd }) => {
   } = useInput(value => value.trim() === '');
 
   const {
-    inputValue: reviewInputValue,
+    inputValue: reviewValue,
     inputValueIsvalid: reviewInputValueIsvalid,
     inputFormIsvalid: reviewFormIsvalid,
     onChangeHandler: reviewOnChangeHandler,
@@ -39,35 +45,12 @@ const UsersForm = ({ onAdd }) => {
     formValueIsvalid= false;
   }
 
-  const { sendRequest } = useFetch();
-
-  const responseData = (data) => {
-    const responseDataList = {
-      id: data.name,
-      title: titleInputValue,
-      author: authorInputValue,
-      review: reviewInputValue,
-    };
-    onAdd(responseDataList);
-  };
-
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    sendRequest(
-      {
-        url: "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
-        method: "POST",
-        headers: {
-          "Content-type": "application/json; charset=utf-8",
-        },
-        body: {
-          title: titleInputValue,
-          author: authorInputValue,
-          review: reviewInputValue,
-        },
-      },
-      responseData
-    );
+     dispatch(inputAction.addToReviewList({
+      titleValue, authorValue, reviewValue
+    }));
+    console.log(reviewList)
     titleResetData();
     authorResetData();
     reviewResetData();
@@ -81,21 +64,21 @@ const UsersForm = ({ onAdd }) => {
           <input
             name="title"
             placeholder="제목"
-            value={titleInputValue}
+            value={titleValue}
             onChange={titleOnChangeHandler}
             onBlur={titleOnBlurHandler}
           />
           <input
             name="author"
             placeholder="저자"
-            value={authorInputValue}
+            value={authorValue}
             onChange={authorOnChangeHandler}
             onBlur={authorOnBlurHandler}
           />
           <textarea
             name="review"
             placeholder="감상평을 입력해주세요."
-            value={reviewInputValue}
+            value={reviewValue}
             onChange={reviewOnChangeHandler}
             onBlur={reviewOnBlurHandler}
           />

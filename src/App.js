@@ -1,38 +1,33 @@
-import React,{ useEffect, useState}  from 'react';
-import './App.css'
-import Header from './components/UI/Header';
-import UsersForm from './components/UsersForm';
-import UsersReviewList from './components/UsersReviewList';
-import useFetch from './hooks/useFetch';
+import React, { useEffect } from "react";
+import "./App.css";
+import Header from "./components/UI/Header";
+import UsersForm from "./components/UsersForm";
+import UsersReviewList from "./components/UsersReviewList";
+import Notification from "./components/UI/Notification";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { fetchReviewList, sendReviewList } from "./store/input-actions";
+// import useFetch from './hooks/useFetch';
+
+let ininitial = true;
 function App() {
-  const [reviewValue, setReviewValue] = useState([]);
+  const dispatch = useDispatch();
+  const reviewList = useSelector((state) => state.input.reviewList);
+  const errorMessage = useSelector((state) => state.ui.errorMessage);
 
-  const {error, sendRequest}  = useFetch();
+  useEffect(() => {     //firebase에서 GET
+    dispatch(fetchReviewList());
+  }, [dispatch]);
 
-  useEffect(() => {
-    const requestConfig = {
-      url: "https://react-http-miniproject-default-rtdb.firebaseio.com/userReviewList.json",
-    };
-    const pushReviewList = (data) => {
-      const reviewData = [];
-        for (const key in data) {
-          reviewData.push({
-            id: key,
-            title: data[key].title,
-            author: data[key].author,
-            review: data[key].review,
-          });
-        }
-
-        setReviewValue(reviewData);
-    };
-    sendRequest(requestConfig, pushReviewList);
-  }, [sendRequest]);
-
-  const onAdd = (responseDataList) => {
-    setReviewValue((prev) => [...prev, responseDataList])
-  };
+  useEffect(() => {     // firebase에서 PUT
+    if (ininitial) {
+      // 새로고침했을 때 값이 안 날라가게
+      ininitial = false;
+      return;
+    }
+    dispatch(sendReviewList(reviewList))
+  }, [reviewList, dispatch]);
 
   return (
     <div>
@@ -40,9 +35,11 @@ function App() {
         <Header />
       </header>
       <main>
-        <UsersForm onAdd={onAdd} />
-        {error}
-        <UsersReviewList reviewValue={reviewValue} />
+        {errorMessage && (
+          <Notification title={errorMessage.title} message={errorMessage.message} />
+        )}
+        <UsersForm />
+        <UsersReviewList />
       </main>
     </div>
   );
