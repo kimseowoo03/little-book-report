@@ -7,7 +7,7 @@ import Notification from "./components/UI/Notification";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchReviewList, sendReviewList } from "./store/input-actions";
+import { sendReviewList, fetchReviewList } from "./store/input-actions";
 
 let ininitial = true;
 function App() {
@@ -16,7 +16,7 @@ function App() {
   const errorMessage = useSelector((state) => state.ui.errorMessage);
 
   useEffect(() => {     //firebase에서 GET
-    dispatch(fetchReviewList());
+    dispatch(fetchReviewList())
   }, [dispatch]);
 
   useEffect(() => {     // firebase에서 PUT
@@ -38,7 +38,7 @@ function App() {
           <Notification title={errorMessage.title} message={errorMessage.message} />
         )}
         <UsersForm />
-        <UsersReviewList />
+        {reviewList ? <UsersReviewList />: '감상평을 등록해주세요'}
       </main>
     </div>
   );

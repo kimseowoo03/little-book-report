@@ -1,14 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { fetchReviewList} from "./input-actions";
 const inputSlice = createSlice({
   name: 'input',
   initialState: {
     reviewList: []
   },
   reducers: {
-    replaceReviewList(state, action) {
-      state.reviewList = action.payload;
-    },
     addToReviewList(state, action) {
       const newReviewList = action.payload;
       state.reviewList.push({
@@ -17,6 +14,12 @@ const inputSlice = createSlice({
         author: newReviewList.authorValue,
         review: newReviewList.reviewValue
       })
+    }
+  },
+  extraReducers: {
+    [fetchReviewList.fulfilled]: (state, action) => {
+      state.reviewList = action.payload;
+      console.log('잘 가져옴')
     }
   }
 });

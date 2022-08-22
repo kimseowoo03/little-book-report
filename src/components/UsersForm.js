@@ -50,7 +50,6 @@ const UsersForm = ( ) => {
      dispatch(inputAction.addToReviewList({
       titleValue, authorValue, reviewValue
     }));
-    console.log(reviewList)
     titleResetData();
     authorResetData();
     reviewResetData();
