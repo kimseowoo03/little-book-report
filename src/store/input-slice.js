@@ -18,7 +18,6 @@ const inputSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchReviewList.fulfilled, (state, action) => {
-      console.log(action.payload)
       state.reviewList = action.payload;
     });
   }

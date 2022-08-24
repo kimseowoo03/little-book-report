@@ -24,6 +24,9 @@ function App() {
       ininitial = false;
       return;
     }
+    if(!reviewList.length){ // 빈값일 때 반환
+      return;
+    }
     dispatch(sendReviewList(reviewList))
   }, [reviewList, dispatch]);
 
