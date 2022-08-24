@@ -20,8 +20,7 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {     // firebase에서 PUT
-    if (ininitial) {
-      // 새로고침했을 때 값이 안 날라가게
+    if (ininitial) { // 새로고침했을 때 값이 안 날라가게
       ininitial = false;
       return;
     }
@@ -38,7 +37,7 @@ function App() {
           <Notification title={errorMessage.title} message={errorMessage.message} />
         )}
         <UsersForm />
-        {reviewList ? <UsersReviewList />: '감상평을 등록해주세요'}
+        {reviewList && <UsersReviewList />}
       </main>
     </div>
   );

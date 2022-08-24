@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import classes from "../components/UsersForm.module.css";
 
@@ -9,7 +9,6 @@ import { inputAction } from "../store/input-slice";
 
 const UsersForm = ( ) => {
   const dispatch = useDispatch();
-  const reviewList = useSelector(state => state.input.reviewList)
 
   const {
     inputValue: titleValue,
