@@ -19,16 +19,16 @@ function App() {
     dispatch(fetchReviewList())
   }, [dispatch]);
 
-  useEffect(() => {     // firebase에서 PUT
-    if (ininitial) { // 새로고침했을 때 값이 안 날라가게
-      ininitial = false;
-      return;
-    }
-    if(!reviewList.length){ // 빈값일 때 반환
-      return;
-    }
-    dispatch(sendReviewList(reviewList))
-  }, [reviewList, dispatch]);
+  // useEffect(() => {     // firebase에서 PUT
+  //   if (ininitial) { // 새로고침했을 때 send 막기
+  //     ininitial = false;
+  //     return;
+  //   }
+  //   if(!reviewList.length){ // 빈값일 때 반환
+  //     return;
+  //   }
+  //   dispatch(sendReviewList(reviewList))
+  // }, [reviewList, dispatch]);
 
   return (
     <div>
