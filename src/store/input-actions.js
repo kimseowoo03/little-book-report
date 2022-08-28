@@ -1,28 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { collection } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
 
 const collectionRef = collection(db, "product");
 export const fetchReviewList = createAsyncThunk(
   'input-slice/fetchReviewList',
   async () => {
-  // const response = await fetch(
-  //   "https://react-http-miniproject-default-rtdb.firebaseio.com/reviewList.json"
-  // );
-  // const reviewListData = await response.json()
-  // const reviewData = await reviewListData || []
-  // return reviewData ;
+    const data = await getDocs(collectionRef);
+    const reviewList  = data.docs.map((doc) => ({...doc.data()}))
+    return reviewList
 });
 
 export const sendReviewList = createAsyncThunk(
   "input-slice/sendReviewList",
       async(reviewList) => {
-         await fetch(
-      "https://react-http-miniproject-default-rtdb.firebaseio.com/reviewList.json",
-      {
-        method: "PUT",
-        body: JSON.stringify(reviewList),
-      }
-    )
+        const {titleValue, authorValue, reviewValue} = reviewList;
+         await addDoc(collectionRef, {
+          id: Math.random().toString(36).substring(2, 8),
+          title: titleValue,
+          author: authorValue,
+          review: reviewValue
+         });
   }
 );

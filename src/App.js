@@ -7,7 +7,7 @@ import Notification from "./components/UI/Notification";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { sendReviewList, fetchReviewList } from "./store/input-actions";
+import { fetchReviewList } from "./store/input-actions";
 
 let ininitial = true;
 function App() {
@@ -18,14 +18,6 @@ function App() {
   useEffect(() => {     //firebase에서 GET
     dispatch(fetchReviewList())
   }, [dispatch]);
-
-  useEffect(() => {     // firebase에서 PUT
-    if (ininitial) { // 새로고침했을 때 값이 안 날라가게
-      ininitial = false;
-      return;
-    }
-    // dispatch(sendReviewList(reviewList))
-  }, [reviewList, dispatch]);
 
   return (
     <div>
