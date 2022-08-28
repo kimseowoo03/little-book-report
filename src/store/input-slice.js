@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchReviewList} from "./input-actions";
+import { fetchReviewList } from "./input-actions";
 const inputSlice = createSlice({
   name: "input",
   initialState: {
-    reviewList: []
+    reviewList: [],
+    userLoginStatus: false,
   },
   reducers: {
+    userStateToggle(state) {
+      state.userLoginStatus = !state.userLoginStatus;
+      console.log(state.userLoginStatus);
+    },
     addToReviewList(state, action) {
       const { titleValue, authorValue, reviewValue } = action.payload;
       state.reviewList.push({
@@ -18,11 +23,11 @@ const inputSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchReviewList.fulfilled, (state, action) => {
-      console.log(action.payload)
+      console.log(action.payload);
       state.reviewList = action.payload;
     });
-  }
+  },
 });
 
-export const  inputAction = inputSlice.actions;
+export const inputAction = inputSlice.actions;
 export default inputSlice.reducer;
