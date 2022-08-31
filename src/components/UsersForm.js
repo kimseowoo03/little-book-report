@@ -11,35 +11,44 @@ import { sendReviewList } from "../store/input-actions";
 const UsersForm = ( ) => {
   const dispatch = useDispatch();
 
-  const {
-    inputValue: titleValue,
-    inputValueIsvalid: titleInputValueIsvalid,
-    inputFormIsvalid: titleFormIsvalid,
-    onChangeHandler: titleOnChangeHandler,
-    onBlurHandler: titleOnBlurHandler,
-    resetData: titleResetData
-  } = useInput(value => value.trim() === '');
+  // const {
+  //   inputValue: titleValue,
+  //   inputValueIsvalid: titleInputValueIsvalid,
+  //   inputFormIsvalid: titleFormIsvalid,
+  //   onChangeHandler: titleOnChangeHandler,
+  //   onBlurHandler: titleOnBlurHandler,
+  //   resetData: titleResetData
+  // } = useInput(value => value.trim() === '');
 
-  const {
-    inputValue: authorValue,
-    inputValueIsvalid: authorInputValueIsvalid,
-    inputFormIsvalid: authorFormIsvalid,
-    onChangeHandler: authorOnChangeHandler,
-    onBlurHandler: authorOnBlurHandler,
-    resetData: authorResetData
-  } = useInput(value => value.trim() === '');
+  // const {
+  //   inputValue: authorValue,
+  //   inputValueIsvalid: authorInputValueIsvalid,
+  //   inputFormIsvalid: authorFormIsvalid,
+  //   onChangeHandler: authorOnChangeHandler,
+  //   onBlurHandler: authorOnBlurHandler,
+  //   resetData: authorResetData
+  // } = useInput(value => value.trim() === '');
 
-  const {
-    inputValue: reviewValue,
-    inputValueIsvalid: reviewInputValueIsvalid,
-    inputFormIsvalid: reviewFormIsvalid,
-    onChangeHandler: reviewOnChangeHandler,
-    onBlurHandler: reviewOnBlurHandler,
-    resetData: reviewResetData
-  } = useInput(value => value.trim() === '')
+  // const {
+  //   inputValue: reviewValue,
+  //   inputValueIsvalid: reviewInputValueIsvalid,
+  //   inputFormIsvalid: reviewFormIsvalid,
+  //   onChangeHandler: reviewOnChangeHandler,
+  //   onBlurHandler: reviewOnBlurHandler,
+  //   resetData: reviewResetData
+  // } = useInput(value => value.trim() === '')
+
+  const titleValue = useInput((val) => val.trim() === "");
+  const titleInputValue = titleValue.inputValue;
+
+  const authorValue = useInput((val) => val.trim() === "");
+  const authorInputValue = authorValue.inputValue;
+
+  const reviewValue = useInput((val) => val.trim() === "");
+  const reviewInputValue = reviewValue.inputValue;
 
   let formValueIsvalid = false;
-  if(titleInputValueIsvalid && authorInputValueIsvalid && reviewInputValueIsvalid) {
+  if(titleValue.inputValueIsvalid && authorValue.inputValueIsvalid && reviewValue.inputValueIsvalid) {
     formValueIsvalid = true;
   }else{
     formValueIsvalid= false;
@@ -48,12 +57,12 @@ const UsersForm = ( ) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
      dispatch(inputAction.addToReviewList({
-      titleValue, authorValue, reviewValue
+      titleInputValue, authorInputValue, reviewInputValue
     }));
-    dispatch(sendReviewList({titleValue, authorValue, reviewValue}))
-    titleResetData();
-    authorResetData();
-    reviewResetData();
+    dispatch(sendReviewList({titleInputValue, authorInputValue, reviewInputValue}))
+    titleValue.resetData();
+    authorValue.resetData();
+    reviewValue.resetData();
   };
 
   return (
@@ -64,28 +73,28 @@ const UsersForm = ( ) => {
           <input
             name="title"
             placeholder="제목"
-            value={titleValue}
-            onChange={titleOnChangeHandler}
-            onBlur={titleOnBlurHandler}
+            value={titleInputValue}
+            onChange={titleValue.onChangeHandler}
+            onBlur={titleValue.onBlurHandler}
           />
           <input
             name="author"
             placeholder="저자"
-            value={authorValue}
-            onChange={authorOnChangeHandler}
-            onBlur={authorOnBlurHandler}
+            value={authorInputValue}
+            onChange={authorValue.onChangeHandler}
+            onBlur={authorValue.onBlurHandler}
           />
           <textarea
             name="review"
             placeholder="감상평을 입력해주세요."
-            value={reviewValue}
-            onChange={reviewOnChangeHandler}
-            onBlur={reviewOnBlurHandler}
+            value={reviewInputValue}
+            onChange={reviewValue.onChangeHandler}
+            onBlur={reviewValue.onBlurHandler}
           />
         </div>
-        {titleFormIsvalid ? <p>제목을 입력해주세요</p> : ''}
-        {authorFormIsvalid ? <p>저자를 입력해주세요</p> : ''}
-        {reviewFormIsvalid ? <p>감상평을 입력해주세요</p> : ''}
+        {titleValue.inputFormIsvalid ? <p>제목을 입력해주세요</p> : ''}
+        {authorValue.inputFormIsvalid ? <p>저자를 입력해주세요</p> : ''}
+        {reviewValue.inputFormIsvalid ? <p>감상평을 입력해주세요</p> : ''}
         <button disabled={formValueIsvalid} type="submit">등록</button>
       </form>
     </React.Fragment>

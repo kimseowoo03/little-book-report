@@ -12,12 +12,12 @@ const inputSlice = createSlice({
       console.log(state.userLoginStatus);
     },
     addToReviewList(state, action) {
-      const { titleValue, authorValue, reviewValue } = action.payload;
+      const { titleInputValue, authorInputValue, reviewInputValue } = action.payload;
       state.reviewList.push({
         id: Math.random().toString(36).substring(2, 8),
-        title: titleValue,
-        author: authorValue,
-        review: reviewValue,
+        title: titleInputValue,
+        author: authorInputValue,
+        review: reviewInputValue,
       });
     },
   },

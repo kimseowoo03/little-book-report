@@ -15,12 +15,11 @@ export const fetchReviewList = createAsyncThunk(
 export const sendReviewList = createAsyncThunk(
   "input-slice/sendReviewList",
   async (reviewList) => {
-    const { titleValue, authorValue, reviewValue } = reviewList;
     await addDoc(collectionRef, {
       id: Math.random().toString(36).substring(2, 8),
-      title: titleValue,
-      author: authorValue,
-      review: reviewValue,
+      title: reviewList.titleInputValue,
+      author: reviewList.authorInputValue,
+      review: reviewList.reviewInputValue,
     });
   }
 );
