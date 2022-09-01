@@ -8,7 +8,6 @@ const userSlice = createSlice({
   },
   reducers: {
    userStatusToggle(state) {
-    console.log('1111')
     state.userToggle = false;
    },
    CurrentLoggedInUser(state, action) {

@@ -1,3 +1,5 @@
+import React from "react";
+
 import classes from "./UserSignUp.module.css";
 import Button from "./UI/Button";
 import { useRef } from "react";
@@ -41,4 +43,4 @@ const UserSignUp = () => {
   );
 };
 
-export default UserSignUp;
+export default React.memo(UserSignUp);

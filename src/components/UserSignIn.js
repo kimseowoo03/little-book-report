@@ -1,3 +1,5 @@
+import React from "react";
+
 import classes from "./UserSignIn.module.css";
 import { auth } from "../firebase-config";
 import Button from "./UI/Button";
@@ -37,4 +39,4 @@ const UserSignIn = () => {
   );
 };
 
-export default UserSignIn;
+export default React.memo(UserSignIn);
