@@ -11,33 +11,6 @@ import { sendReviewList } from "../store/input-actions";
 const UsersForm = ( ) => {
   const dispatch = useDispatch();
 
-  // const {
-  //   inputValue: titleValue,
-  //   inputValueIsvalid: titleInputValueIsvalid,
-  //   inputFormIsvalid: titleFormIsvalid,
-  //   onChangeHandler: titleOnChangeHandler,
-  //   onBlurHandler: titleOnBlurHandler,
-  //   resetData: titleResetData
-  // } = useInput(value => value.trim() === '');
-
-  // const {
-  //   inputValue: authorValue,
-  //   inputValueIsvalid: authorInputValueIsvalid,
-  //   inputFormIsvalid: authorFormIsvalid,
-  //   onChangeHandler: authorOnChangeHandler,
-  //   onBlurHandler: authorOnBlurHandler,
-  //   resetData: authorResetData
-  // } = useInput(value => value.trim() === '');
-
-  // const {
-  //   inputValue: reviewValue,
-  //   inputValueIsvalid: reviewInputValueIsvalid,
-  //   inputFormIsvalid: reviewFormIsvalid,
-  //   onChangeHandler: reviewOnChangeHandler,
-  //   onBlurHandler: reviewOnBlurHandler,
-  //   resetData: reviewResetData
-  // } = useInput(value => value.trim() === '')
-
   const titleValue = useInput((val) => val.trim() === "");
   const titleInputValue = titleValue.inputValue;
 

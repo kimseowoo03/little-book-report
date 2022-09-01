@@ -36,7 +36,7 @@ const UserSignUp = () => {
         <label>Password</label>
         <input type="password" ref={passwordRef} />
       </div>
-      <Button type="submit" value="회원가입" />
+      <Button type="submit">회원가입</Button>
     </form>
   );
 };

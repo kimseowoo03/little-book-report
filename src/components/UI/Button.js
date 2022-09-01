@@ -1,7 +1,8 @@
 import classes from "./Button.module.css"
 
-const Button = ({ type, value }) => {
-  return <button className={classes.button} type={type}>{value}</button>;
+const Button = ({children, ...rest}) => {
+  console.log({...rest})
+  return <button className={classes.button} {...rest}>{children}</button>;
 };
 
 export default Button;

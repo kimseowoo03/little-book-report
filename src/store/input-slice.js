@@ -4,13 +4,8 @@ const inputSlice = createSlice({
   name: "input",
   initialState: {
     reviewList: [],
-    userLoginStatus: false,
   },
   reducers: {
-    userStateToggle(state) {
-      state.userLoginStatus = !state.userLoginStatus;
-      console.log(state.userLoginStatus);
-    },
     addToReviewList(state, action) {
       const { titleInputValue, authorInputValue, reviewInputValue } = action.payload;
       state.reviewList.push({

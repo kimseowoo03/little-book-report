@@ -4,19 +4,20 @@ import { auth } from "../../firebase-config";
 import { signOut } from "firebase/auth";
 
 import { useDispatch, useSelector } from "react-redux";
-import { inputAction } from "../../store/input-slice";
+import { userActions } from "../../store/user-slice";
+
 const Header = () => {
   const dispatch = useDispatch();
-  const userLoginStatus = useSelector((state) => state.input.userLoginStatus);
+  const userToggle = useSelector((state)=> state.user.userToggle);
 
   const logOutHandler = () => {
     signOut(auth);
-    dispatch(inputAction.userStateToggle());
+    dispatch(userActions.userStatusToggle());
   };
   return (
     <div className={classes.header}>
       <h1>작은 도서관</h1>
-      {userLoginStatus && (
+      {userToggle && (
         <>
         <nav className={classes.nav}>
           <ul>
@@ -25,7 +26,7 @@ const Header = () => {
             <li>감상평</li>
           </ul>
         </nav>
-         <button onClick={logOutHandler}>로그아웃</button>
+        <button onClick={logOutHandler}>로그아웃</button>
          </>
       )}
     </div>
