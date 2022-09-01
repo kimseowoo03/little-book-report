@@ -1,3 +1,7 @@
+import classes from "./UserSignIn.module.css";
+
+import Button from "./UI/Button";
+
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { inputAction } from "../store/input-slice";
@@ -26,7 +30,7 @@ const UserSignIn = () => {
   };
 
   return (
-    <form onSubmit={signInHandler}>
+    <form onSubmit={signInHandler} className={classes.form}>
       <div>
         <label>Email</label>
         <input type="email" ref={emailRef} />
@@ -35,7 +39,7 @@ const UserSignIn = () => {
         <label>Password</label>
         <input type="password" ref={passwordRef} />
       </div>
-      <button type="submit">로그인</button>
+      <Button type="submit" value="로그인" />
     </form>
   );
 };

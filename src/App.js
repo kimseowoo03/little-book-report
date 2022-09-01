@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import "./App.css";
+import classes from "./App.module.css";
+
 import Header from "./components/UI/Header";
 import UsersForm from "./components/UsersForm";
 import UsersReviewList from "./components/UsersReviewList";
@@ -28,16 +29,20 @@ function App() {
         <Header />
       </header>
       <main>
-        {!userLoginStatus && <UserSignUp />}
-        {!userLoginStatus && <UserSignIn />}
-        {errorMessage && userLoginStatus && (
-          <Notification
-            title={errorMessage.title}
-            message={errorMessage.message}
-          />
-        )}
-        <UsersForm />
-        {reviewList && <UsersReviewList />}
+        <div className={classes.userLogForm}>
+          {!userLoginStatus && <UserSignUp />}
+          {!userLoginStatus && <UserSignIn />}
+        </div>
+        <div className={classes.userReviewForm}>
+          {errorMessage && userLoginStatus && (
+            <Notification
+              title={errorMessage.title}
+              message={errorMessage.message}
+            />
+          )}
+          <UsersForm />
+          {reviewList && <UsersReviewList />}
+        </div>
       </main>
     </div>
   );

@@ -1,3 +1,5 @@
+import classes from "./UserSignUp.module.css";
+import Button from "./UI/Button";
 import { useRef } from "react";
 import { auth } from "../firebase-config";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -14,16 +16,15 @@ const UserSignUp = () => {
     const name = nameRef.current.value;
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(auth.currentUser, {displayName: name});
-      console.log(user.user)
+      await updateProfile(auth.currentUser, { displayName: name });
+      console.log(user.user);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-
   };
   return (
-    <form onSubmit={submitHandler} >
-       <div>
+    <form onSubmit={submitHandler} className={classes.form}>
+      <div>
         <label>name</label>
         <input type="text" ref={nameRef} />
       </div>
@@ -35,9 +36,9 @@ const UserSignUp = () => {
         <label>Password</label>
         <input type="password" ref={passwordRef} />
       </div>
-      <button type="submit">회원가입</button>
+      <Button type="submit" value="회원가입" />
     </form>
-  )
-}
+  );
+};
 
 export default UserSignUp;

@@ -1,6 +1,6 @@
 .list_box {
-  max-width: 80%;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 550px;
 }
 .ul {
   list-style: none;
