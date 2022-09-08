@@ -7,7 +7,9 @@ export const fetchReviewList = createAsyncThunk(
   "input-slice/fetchReviewList",
   async () => {
     const data = await getDocs(collectionRef);
-    const reviewList = data.docs.map((doc) => ({ ...doc.data() }));
+    //자동 부여되는 id를 사용하자.
+    const reviewList = data.docs.map((doc) => ({id: doc.id, ...doc.data() }));
+    console.log(reviewList)
     return reviewList;
   }
 );
@@ -16,7 +18,6 @@ export const sendReviewList = createAsyncThunk(
   "input-slice/sendReviewList",
   async (reviewList) => {
     await addDoc(collectionRef, {
-      id: Math.random().toString(36).substring(2, 8),
       title: reviewList.titleInputValue,
       author: reviewList.authorInputValue,
       review: reviewList.reviewInputValue,
