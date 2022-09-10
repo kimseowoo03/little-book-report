@@ -1,0 +1,19 @@
+.userReviewForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reviewBtn {
+  display: flex;
+  width: 100%;
+  padding-right: 120px;
+  justify-content: flex-end;
+}
+.reviewBtn button {
+  height: 30px;
+  width: 80px;
+  margin-left: 5px;
+  border: 1px solid rgb(169, 208, 150); ;
+  border-radius: 5px;
+  background-color: rgb(169, 208, 150);
+}
