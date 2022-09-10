@@ -5,7 +5,6 @@ import classes from "../components/UsersForm.module.css";
 
 // import useFetch from "../hooks/useFetch";
 import useInput from "../hooks/useInput";
-import { inputAction } from "../store/input-slice";
 import { sendReviewList } from "../store/input-actions";
 
 const UsersForm = ( ) => {
@@ -29,9 +28,6 @@ const UsersForm = ( ) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-     dispatch(inputAction.addToReviewList({
-      titleInputValue, authorInputValue, reviewInputValue
-    }));
     dispatch(sendReviewList({titleInputValue, authorInputValue, reviewInputValue}))
     titleValue.resetData();
     authorValue.resetData();

@@ -1,0 +1,6 @@
+.userLogForm {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}

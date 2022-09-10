@@ -6,11 +6,9 @@ import Button from "./UI/Button";
 import { useRef } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-
 const UserSignIn = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  
 
   const signInHandler = async (event) => {
     event.preventDefault();

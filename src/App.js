@@ -1,29 +1,32 @@
-import React, { useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import classes from "./App.module.css";
+import React, {useEffect} from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/UI/Header";
-import UsersForm from "./components/UsersForm";
-import UsersReviewList from "./components/UsersReviewList";
-import Notification from "./components/UI/Notification";
-import UserSignUp from "./components/UserSignUp";
-import UserSignIn from "./components/UserSignIn";
+import Home from "./pages/Home";
+import UsersSignUp from "./pages/UsersSignUp";
+import ReviewHome from "./pages/ReviewHome";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+import { useNavigate } from "react-router-dom";
+
+// import UsersForm from "./components/UsersForm";
+// import UsersReviewList from "./components/UsersReviewList";
+// import Notification from "./components/UI/Notification";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchReviewList } from "./store/input-actions";
+// import { fetchReviewList } from "./store/input-actions";
 import { userActions } from "./store/user-slice";
 
 function App() {
+  const userToggle = useSelector((state) => state.user.userToggle);
+  console.log(userToggle);
   const dispatch = useDispatch();
-  const reviewList = useSelector((state) => state.input.reviewList);
-  const errorMessage = useSelector((state) => state.ui.errorMessage);
-  const userToggle = useSelector((state)=> state.user.userToggle);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    //firebase에서 GET
-    dispatch(fetchReviewList());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   //firebase에서 GET
+  //   dispatch(fetchReviewList());
+  // }, [dispatch]);
 
   const auth = getAuth();
   //firebase에서 권장하는 방법
@@ -36,8 +39,9 @@ function App() {
             name: user.displayName,
             uid: user.uid
           }
-          console.log("현재상태: 로그인")
-          dispatch(userActions.CurrentLoggedInUser(currentUser))
+          console.log("현재상태: 로그인" + user.uid)
+          dispatch(userActions.CurrentLoggedInUser(currentUser));
+          navigate("/Home");
         } else {
           //로그아웃
           console.log("현재상태: 로그아웃")
@@ -46,27 +50,15 @@ function App() {
     }, [auth, dispatch])
 
   return (
-    <div>
-      <header>
-        <Header />
-      </header>
-      <main>
-        <div className={classes.userLogForm}>
-          {!userToggle && <UserSignUp />}
-          {!userToggle && <UserSignIn />}
-        </div>
-        <div className={classes.userReviewForm}>
-          {errorMessage && userToggle && (
-            <Notification
-              title={errorMessage.title}
-              message={errorMessage.message}
-            />
-          )}
-          <UsersForm />
-          {reviewList && <UsersReviewList />}
-        </div>
-      </main>
-    </div>
+    <Routes>
+      <Route path="/Home" element={<Home />}>
+        {userToggle ? (
+          <Route path="" element={<ReviewHome />} />
+        ) : (
+          <Route path="SignUp" element={<UsersSignUp />} />
+        )}
+      </Route>
+    </Routes>
   );
 }
 
