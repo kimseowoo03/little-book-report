@@ -1,5 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import classes from "../components/UsersForm.module.css";
 
@@ -7,8 +8,10 @@ import classes from "../components/UsersForm.module.css";
 import useInput from "../hooks/useInput";
 import { sendReviewList } from "../store/input-actions";
 
-const UsersForm = ( ) => {
+const UsersForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
 
   const titleValue = useInput((val) => val.trim() === "");
   const titleInputValue = titleValue.inputValue;
@@ -20,24 +23,35 @@ const UsersForm = ( ) => {
   const reviewInputValue = reviewValue.inputValue;
 
   let formValueIsvalid = false;
-  if(titleValue.inputValueIsvalid && authorValue.inputValueIsvalid && reviewValue.inputValueIsvalid) {
+  if (
+    titleValue.inputValueIsvalid &&
+    authorValue.inputValueIsvalid &&
+    reviewValue.inputValueIsvalid
+  ) {
     formValueIsvalid = true;
-  }else{
-    formValueIsvalid= false;
+  } else {
+    formValueIsvalid = false;
   }
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    dispatch(sendReviewList({titleInputValue, authorInputValue, reviewInputValue}))
+    let userId
+    if(user){
+      userId = user.uid
+    }
+    dispatch(
+      sendReviewList({ titleInputValue, authorInputValue, reviewInputValue, userId})
+    );
     titleValue.resetData();
     authorValue.resetData();
     reviewValue.resetData();
+    navigate("/Review")
   };
 
   return (
-    <React.Fragment>
+    <div className={classes.users_form}>
       <form className={classes.form} onSubmit={onSubmitHandler}>
-        <p>감상평</p>
+        <p>Write</p>
         <div className={classes.form_input}>
           <input
             name="title"
@@ -61,12 +75,14 @@ const UsersForm = ( ) => {
             onBlur={reviewValue.onBlurHandler}
           />
         </div>
-        {titleValue.inputFormIsvalid ? <p>제목을 입력해주세요</p> : ''}
-        {authorValue.inputFormIsvalid ? <p>저자를 입력해주세요</p> : ''}
-        {reviewValue.inputFormIsvalid ? <p>감상평을 입력해주세요</p> : ''}
-        <button disabled={formValueIsvalid} type="submit">등록</button>
+        {titleValue.inputFormIsvalid ? <p>제목을 입력해주세요</p> : ""}
+        {authorValue.inputFormIsvalid ? <p>저자를 입력해주세요</p> : ""}
+        {reviewValue.inputFormIsvalid ? <p>감상평을 입력해주세요</p> : ""}
+        <button disabled={formValueIsvalid} type="submit">
+          등록
+        </button>
       </form>
-    </React.Fragment>
+    </div>
   );
 };
 
