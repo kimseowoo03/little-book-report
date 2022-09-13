@@ -13,10 +13,12 @@
   margin-right: auto;
 }
 .header button {
-  padding: 9px 25px;
+  width: 80px;
+  height: 30px;
   background-color: rgb(178, 206, 164);
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
+  margin-left: 5px;
 }
 .nav ul{
   list-style: none;

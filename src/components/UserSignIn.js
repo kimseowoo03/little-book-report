@@ -5,10 +5,12 @@ import { auth } from "../firebase-config";
 import Button from "./UI/Button";
 import { useRef } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const UserSignIn = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
 
   const signInHandler = async (event) => {
     event.preventDefault();
@@ -17,6 +19,7 @@ const UserSignIn = () => {
     try {
       //사용자 로그인 처리
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/Home");
     } catch (error) {
       console.log(error.message);
     }

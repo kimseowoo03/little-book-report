@@ -1,7 +1,5 @@
 import { Fragment } from "react";
-import { Link, Outlet } from "react-router-dom";
-
-import Header from "../components/UI/Header";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
@@ -10,9 +8,8 @@ const Home = () => {
 
   return (
     <Fragment>
-      <Header />
-      {!userToggle && <Link to="SignUp" >로그인/회원가입</Link>}
-      <Outlet />
+      {!userToggle && <Link to="/SignUp" >로그인/회원가입</Link>}
+      <p>Home입니다.</p>
     </Fragment>
   );
 };
