@@ -4,9 +4,13 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
-    userToggle: false
+    userToggle: false,
+    myReview: false
   },
   reducers: {
+   myReviewToggle(state) {
+    state.myReview = !state.myReview;
+   },
    userStatusToggle(state) {
     state.userToggle = false;
    },

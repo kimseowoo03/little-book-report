@@ -1,21 +1,30 @@
-import { useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import classes from "./ReviewHome.module.css";
 
 // import Notification from "../components/UI/Notification";
 import UsersReviewList from "../components/UsersReviewList";
-import { useSelector, useDispatch } from "react-redux";
-import {fetchReviewList} from "../store/input-actions";
+import { useDispatch, useSelector } from "react-redux";
+
+import { userActions } from "../store/user-slice";
 
 const ReviewHome = () => {
   const dispatch = useDispatch();
-  const reviewList = useSelector((state) => state.input.reviewList);
-  const errorMessage = useSelector((state) => state.ui.errorMessage);
+  const navigate = useNavigate();
+  const myReview = useSelector((state) => state.user.myReview);
+  // const errorMessage = useSelector((state) => state.ui.errorMessage);
+  const reviewHandler = () => {
+    dispatch(userActions.myReviewToggle());
+    navigate("/Review", { replace: true });
+  };
 
-    useEffect(() => {
-    //firebase에서 GET
-    dispatch(fetchReviewList());
-  }, [dispatch]);
+  const myReviewHandler = () => {
+    dispatch(userActions.myReviewToggle());
+    navigate("myreview");
+  };
+  // useEffect(() => {
+  //   //firebase에서 GET
+  //   dispatch(fetchReviewList(userId));
+  // }, [dispatch, userId]);
 
   return (
     <div className={classes.userReviewForm}>
@@ -25,12 +34,17 @@ const ReviewHome = () => {
           message={errorMessage.message}
         />
       )} */}
-      <Outlet />
       <div className={classes.reviewBtn}>
-        <button>my review</button>
-        <button><Link to="Write">write</Link></button>
+        {myReview ? (
+          <button onClick={reviewHandler}>review</button>
+        ) : (
+          <button onClick={myReviewHandler}>my review</button>
+        )}
+        <button>
+          <Link to="/Write">write</Link>
+        </button>
       </div>
-      {reviewList && <UsersReviewList />}
+      {myReview ? <Outlet /> : <UsersReviewList />}
     </div>
   );
 };
