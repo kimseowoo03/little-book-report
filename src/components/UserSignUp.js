@@ -5,11 +5,13 @@ import Button from "./UI/Button";
 import { useRef } from "react";
 import { auth } from "../firebase-config";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const UserSignUp = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const nameRef = useRef();
+  const navigate = useNavigate();
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -19,6 +21,7 @@ const UserSignUp = () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, { displayName: name });
+      navigate("/");
       console.log(user.user);
     } catch (error) {
       console.log(error.message);

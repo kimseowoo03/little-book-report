@@ -45,7 +45,7 @@ const UsersForm = () => {
     titleValue.resetData();
     authorValue.resetData();
     reviewValue.resetData();
-    navigate("/Review")
+    navigate("/review")
   };
 
   return (

@@ -19,7 +19,7 @@ const UserSignIn = () => {
     try {
       //사용자 로그인 처리
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/Home");
+      navigate("/");
     } catch (error) {
       console.log(error.message);
     }

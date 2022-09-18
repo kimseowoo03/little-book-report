@@ -39,16 +39,18 @@ function App() {
   }, [auth, dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Header />}>
-        <Route path="Home" element={<Home />} />
-        {!userToggle && <Route path="SignUp" element={<UsersSignUp />} />}
-        <Route path="Review" element={<ReviewHome />} >
-          <Route path="myreview" element={<MyReviewList />} />
+    <>
+      <Header />
+      <Routes>
+        {!userToggle && <Route path="signup" element={<UsersSignUp />} />}
+        <Route path="/" element={<Home />}>
+          <Route path="review" element={<ReviewHome />}>
+            <Route path="myreview" element={<MyReviewList />} />
+          </Route>
+          <Route path="write" element={<UsersForm />} />
         </Route>
-        <Route path="Write" element={<UsersForm />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }
 

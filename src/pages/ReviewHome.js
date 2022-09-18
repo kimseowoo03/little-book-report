@@ -14,7 +14,7 @@ const ReviewHome = () => {
   // const errorMessage = useSelector((state) => state.ui.errorMessage);
   const reviewHandler = () => {
     dispatch(userActions.myReviewToggle());
-    navigate("/Review", { replace: true });
+    navigate("/review", { replace: true });
   };
 
   const myReviewHandler = () => {
@@ -41,7 +41,7 @@ const ReviewHome = () => {
           <button onClick={myReviewHandler}>my review</button>
         )}
         <button>
-          <Link to="/Write">write</Link>
+          <Link to="/write">write</Link>
         </button>
       </div>
       {myReview ? <Outlet /> : <UsersReviewList />}

@@ -15,7 +15,7 @@ const Header = () => {
 
   const logOutHandler = () => {
     signOut(auth);
-    navigate("/Home");
+    navigate("/");
     dispatch(userActions.userStatusToggle());
   };
   return (
@@ -27,10 +27,10 @@ const Header = () => {
             <nav className={classes.nav}>
               <ul>
                 <li>
-                  <Link to="Home">Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="Review">감상평</Link>
+                  <Link to="review">감상평</Link>
                 </li>
               </ul>
             </nav>
