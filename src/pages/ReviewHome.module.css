@@ -13,7 +13,13 @@
   height: 30px;
   width: 80px;
   margin-left: 5px;
-  border: 1px solid rgb(169, 208, 150); ;
+  border: 1px solid rgb(255, 255, 255); ;
   border-radius: 5px;
-  background-color: rgb(169, 208, 150);
+  background-color: rgb(204, 204, 204);
+}
+.reviewBtn a {
+  text-decoration: none;
+}
+.reviewBtn a:visited {
+  color: black;
 }
