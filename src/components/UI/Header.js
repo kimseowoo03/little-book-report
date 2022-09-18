@@ -6,23 +6,26 @@ import { Link, useNavigate, Outlet } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../store/user-slice";
+import { uiActions } from "../../store/ui-slice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userToggle = useSelector((state) => state.user.userToggle);
   const user = useSelector((state) => state.user.user);
-  const [signToggle, setSignToggle] = useState(false);
+  const signToggle = useSelector((state) => state.ui.signToggle);
 
   const logOutHandler = () => {
     signOut(auth);
     navigate("/");
     dispatch(userActions.userStatusToggle());
+    signHandler()
   };
 
   const signHandler = () => {
-    setSignToggle(!signToggle);
+    dispatch(uiActions.signHandler())
   }
+
   return (
     <Fragment>
       <div className={classes.header}>
@@ -44,7 +47,7 @@ const Header = () => {
           </>
         ):(
           <>
-          {signToggle?<Link className={classes.homeLink} to="/" onClick={signHandler} >홈으로</Link> :<Link className={classes.homeLink} to="/signUp" onClick={signHandler} > 가입하러 가기</Link>}
+          {signToggle?<Link className={classes.homeLink} to="/" onClick={signHandler} >홈으로</Link> :<Link className={classes.homeLink} to="/signUp" onClick={signHandler} > 로그인/회원가입</Link>}
           </>
         )}
       </div>

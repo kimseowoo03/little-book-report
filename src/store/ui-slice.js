@@ -4,8 +4,13 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: {
     errorMessage: null,
+    signToggle: false,
   },
-  reducers: {},
+  reducers: {
+    signHandler(state) {
+      state.signToggle = !state.signToggle
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(sendReviewList.pending, (state) => {
