@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import classes from "./Header.module.css";
 import { auth } from "../../firebase-config";
 import { signOut } from "firebase/auth";
@@ -12,17 +12,22 @@ const Header = () => {
   const navigate = useNavigate();
   const userToggle = useSelector((state) => state.user.userToggle);
   const user = useSelector((state) => state.user.user);
+  const [signToggle, setSignToggle] = useState(false);
 
   const logOutHandler = () => {
     signOut(auth);
     navigate("/");
     dispatch(userActions.userStatusToggle());
   };
+
+  const signHandler = () => {
+    setSignToggle(!signToggle);
+  }
   return (
     <Fragment>
       <div className={classes.header}>
         <h1>작은 도서관</h1>
-        {userToggle && (
+        {userToggle ? (
           <>
             <nav className={classes.nav}>
               <ul>
@@ -36,6 +41,10 @@ const Header = () => {
             </nav>
             <p>{user && user.name}님</p>
             <button onClick={logOutHandler}>로그아웃</button>
+          </>
+        ):(
+          <>
+          {signToggle?<Link className={classes.homeLink} to="/" onClick={signHandler} >홈으로</Link> :<Link className={classes.homeLink} to="/signUp" onClick={signHandler} > 가입하러 가기</Link>}
           </>
         )}
       </div>

@@ -42,13 +42,12 @@ function App() {
     <>
       <Header />
       <Routes>
-        {!userToggle && <Route path="signup" element={<UsersSignUp />} />}
-        <Route path="/" element={<Home />}>
-          <Route path="review" element={<ReviewHome />}>
-            <Route path="myreview" element={<MyReviewList />} />
-          </Route>
-          <Route path="write" element={<UsersForm />} />
+        {!userToggle && <Route path="/signup" element={<UsersSignUp />} />}
+        <Route path="/" element={<Home />} />
+        <Route path="review" element={<ReviewHome />}>
+          <Route path="myreview" element={<MyReviewList />} />
         </Route>
+        <Route path="write" element={<UsersForm />} />
       </Routes>
     </>
   );
