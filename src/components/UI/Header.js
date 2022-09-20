@@ -19,35 +19,49 @@ const Header = () => {
     signOut(auth);
     navigate("/");
     dispatch(userActions.userStatusToggle());
-    signHandler()
+    signHandler();
   };
 
   const signHandler = () => {
-    dispatch(uiActions.signHandler())
-  }
+    dispatch(uiActions.signHandler());
+  };
 
   return (
     <Fragment>
       <div className={classes.header}>
         <h1>작은 도서관</h1>
-        {userToggle ? (
+        <nav className={classes.nav}>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="review">감상평</Link>
+            </li>
+          </ul>
+        </nav>
+        {userToggle && (
           <>
-            <nav className={classes.nav}>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="review">감상평</Link>
-                </li>
-              </ul>
-            </nav>
             <p>{user && user.name}님</p>
             <button onClick={logOutHandler}>로그아웃</button>
           </>
-        ):(
+        )}
+        {!userToggle && (
           <>
-          {signToggle?<Link className={classes.homeLink} to="/" onClick={signHandler} >홈으로</Link> :<Link className={classes.homeLink} to="/signUp" onClick={signHandler} > 로그인/회원가입</Link>}
+            {signToggle ? (
+              <Link className={classes.homeLink} to="/" onClick={signHandler}>
+                홈으로
+              </Link>
+            ) : (
+              <Link
+                className={classes.homeLink}
+                to="/signup"
+                onClick={signHandler}
+              >
+                {" "}
+                로그인/회원가입
+              </Link>
+            )}
           </>
         )}
       </div>

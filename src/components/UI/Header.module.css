@@ -6,7 +6,7 @@
 .header {
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
+  align-items: center;
   padding: 20px 10%;
 }
 .header h1{
