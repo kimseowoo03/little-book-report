@@ -19,6 +19,7 @@ const Header = () => {
     signOut(auth);
     navigate("/");
     dispatch(userActions.userStatusToggle());
+    dispatch(userActions.logOutHandler());
     signHandler();
   };
 

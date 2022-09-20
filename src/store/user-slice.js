@@ -17,7 +17,10 @@ const userSlice = createSlice({
    CurrentLoggedInUser(state, action) {
     state.user = action.payload;
     state.userToggle = true;
-   }
+   },
+   logOutHandler(state) {
+    state.user = null;
+  }
   },
 });
 
