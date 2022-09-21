@@ -1,12 +1,14 @@
-import React, { Fragment, useState } from "react";
-import classes from "./Header.module.css";
-import { auth } from "../../firebase-config";
-import { signOut } from "firebase/auth";
+import React, { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, Outlet } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../../firebase-config";
+import { signOut } from "firebase/auth";
+
 import { userActions } from "../../store/user-slice";
 import { uiActions } from "../../store/ui-slice";
+
+import classes from "./Header.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();

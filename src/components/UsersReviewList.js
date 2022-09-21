@@ -1,8 +1,10 @@
-import React, {useEffect} from "react";
-import Review from "./Review";
-import classes from "./UsersReviewList.module.css";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import Review from "./Review";
 import { fetchReviewList } from "../store/input-actions";
+
+import classes from "./UsersReviewList.module.css";
 
 const UsersReviewList = () => {
   const user = useSelector((state) => state.user.user);

@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import Home from "./pages/Home";
 import UsersSignUp from "./pages/UsersSignUp";
 import ReviewHome from "./pages/ReviewHome";
+
 import Header from "./components/UI/Header";
-
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 import UsersForm from "./components/UsersForm";
-
-import { useSelector, useDispatch } from "react-redux";
-import { userActions } from "./store/user-slice";
 import MyReviewList from "./components/MyReviewList";
+import { userActions } from "./store/user-slice";
+
 
 function App() {
   const userToggle = useSelector((state) => state.user.userToggle);

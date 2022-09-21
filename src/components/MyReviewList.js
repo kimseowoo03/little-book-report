@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import Review from "./Review";
 import { useDispatch, useSelector } from "react-redux";
+
+import Review from "./Review";
 import { fetchMyReviewList } from "../store/input-actions";
 
 const MyReviewList = () => {

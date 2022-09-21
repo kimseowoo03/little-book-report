@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { sendReviewList } from "./input-actions";
+
 const uiSlice = createSlice({
   name: "ui",
   initialState: {
@@ -8,8 +10,8 @@ const uiSlice = createSlice({
   },
   reducers: {
     signHandler(state) {
-      state.signToggle = !state.signToggle
-    }
+      state.signToggle = !state.signToggle;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -34,7 +36,7 @@ const uiSlice = createSlice({
         };
         console.log("실패!");
       });
-  }
+  },
 });
 
 export const uiActions = uiSlice.actions;
