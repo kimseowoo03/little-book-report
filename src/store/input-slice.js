@@ -10,11 +10,11 @@ const inputSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchReviewList.fulfilled, (state, action) => {
-      console.log("패치완료!");
+      console.log("[input-slice/fetchReviewList] Fetch complete");
       state.reviewList = action.payload;
     });
     builder.addCase(fetchMyReviewList.fulfilled, (state, action) => {
-      console.log("myreview패치완료!");
+      console.log("[input-slice/fetchMyReviewList] Fetch complete");
       state.reviewList = action.payload;
     });
   },

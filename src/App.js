@@ -19,7 +19,7 @@ function App() {
   const dispatch = useDispatch();
 
   const auth = getAuth();
-  //firebase에서 권장하는 방법
+
   // 현재 로그인 사용자 관찰자
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -29,11 +29,10 @@ function App() {
           name: user.displayName,
           uid: user.uid,
         };
-        console.log("현재상태: 로그인" + user.uid);
+        console.log("[App/onAuthStateChanged] Login" + user.uid);
         dispatch(userActions.CurrentLoggedInUser(currentUser));
       } else {
-        //로그아웃
-        console.log("현재상태: 로그아웃");
+        console.log("[App/onAuthStateChanged] Log out");
       }
     });
   }, [auth, dispatch]);
