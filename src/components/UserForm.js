@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useInput from "../hooks/useInput";
 import { sendReviewList } from "../store/input-actions";
 
-import classes from "../components/UsersForm.module.css";
+import classes from "../components/UserForm.module.css";
 
 const UsersForm = () => {
   const dispatch = useDispatch();

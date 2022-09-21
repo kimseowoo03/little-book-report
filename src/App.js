@@ -5,11 +5,11 @@ import { Routes, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import Home from "./pages/Home";
-import UsersSignUp from "./pages/UsersSignUp";
+import UserPageSignUp from "./pages/UserPageSignUp";
 import ReviewHome from "./pages/ReviewHome";
 
 import Header from "./components/UI/Header";
-import UsersForm from "./components/UsersForm";
+import UserForm from "./components/UserForm";
 import MyReviewList from "./components/MyReviewList";
 import { userActions } from "./store/user-slice";
 
@@ -41,12 +41,12 @@ function App() {
     <>
       <Header />
       <Routes>
-        {!userToggle && <Route path="/signup" element={<UsersSignUp />} />}
+        {!userToggle && <Route path="/signup" element={<UserPageSignUp />} />}
         <Route path="/" element={<Home />} />
         <Route path="review" element={<ReviewHome />}>
           <Route path="myreview" element={<MyReviewList />} />
         </Route>
-        <Route path="write" element={<UsersForm />} />
+        <Route path="write" element={<UserForm />} />
       </Routes>
     </>
   );

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 
 // import Notification from "../components/UI/Notification";
-import UsersReviewList from "../components/UsersReviewList";
+import UserReviewList from "../components/UserReviewList";
 import { userActions } from "../store/user-slice";
 
 import classes from "./ReviewHome.module.css";
@@ -58,7 +58,7 @@ const ReviewHome = () => {
           write
         </button>
       </div>
-      {myReview ? <Outlet /> : <UsersReviewList />}
+      {myReview ? <Outlet /> : <UserReviewList />}
     </div>
   );
 };

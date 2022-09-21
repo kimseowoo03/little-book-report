@@ -1,7 +1,7 @@
 import UserSignIn from "../components/UserSignIn";
 import UserSignUp from "../components/UserSignUp";
 
-import classes from "./UsersSignUp.module.css"
+import classes from "./UserPageSignUp.module.css"
 
 const UsersSignUp = () => {
   return(
