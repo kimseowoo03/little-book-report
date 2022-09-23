@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import useInput from "../hooks/useInput";
+import useUserForm from "../hooks/useUserForm";
 import { sendReviewList } from "../store/input-actions";
 
 import classes from "../components/UserForm.module.css";
@@ -12,13 +12,13 @@ const UsersForm = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
 
-  const titleValue = useInput((val) => val.trim() === "");
+  const titleValue = useUserForm((val) => val.trim() === "");
   const titleInputValue = titleValue.inputValue;
 
-  const authorValue = useInput((val) => val.trim() === "");
+  const authorValue = useUserForm((val) => val.trim() === "");
   const authorInputValue = authorValue.inputValue;
 
-  const reviewValue = useInput((val) => val.trim() === "");
+  const reviewValue = useUserForm((val) => val.trim() === "");
   const reviewInputValue = reviewValue.inputValue;
 
   let formValueIsvalid = false;

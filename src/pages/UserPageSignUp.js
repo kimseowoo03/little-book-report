@@ -3,7 +3,7 @@ import UserSignUp from "../components/UserSignUp";
 
 import classes from "./UserPageSignUp.module.css"
 
-const UsersSignUp = () => {
+const UserPageSignUp = () => {
   return(
     <div className={classes.userLogForm}>
     <UserSignUp />
@@ -12,4 +12,4 @@ const UsersSignUp = () => {
   );
 };
 
-export default UsersSignUp;
+export default UserPageSignUp;

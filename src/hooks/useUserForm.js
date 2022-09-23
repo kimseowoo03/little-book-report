@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-const useInput = (inputValueIsvalidFun) => {
+/**
+새로운 훅을 만들 경우 useUserForm을 참고하여 만들어주세요.
+ */
+const useUserForm = (inputValueIsvalidFun) => {
   const [inputValue, setInputValue] = useState("");
   const [inputTouched, setInputTouched] = useState(false);
 
@@ -30,4 +33,4 @@ const useInput = (inputValueIsvalidFun) => {
   }
 };
 
-export default useInput;
+export default useUserForm;
