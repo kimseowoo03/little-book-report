@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 
 // import Notification from "../components/UI/Notification";
-import UserReviewList from "../components/UserReviewList";
+import UserReviewList from "../components/Review/UserReviewList";
 import { userActions } from "../store/user-slice";
 
 import classes from "./ReviewHome.module.css";

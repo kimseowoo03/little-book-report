@@ -2,10 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import useUserForm from "../hooks/useUserForm";
-import { sendReviewList } from "../store/input-actions";
+import useUserForm from "../../hooks/useUserForm";
+import { sendReviewList } from "../../store/input-actions";
 
-import classes from "../components/UserForm.module.css";
+import classes from "./UserForm.module.css";
 
 const UsersForm = () => {
   const dispatch = useDispatch();

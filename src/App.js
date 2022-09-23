@@ -9,8 +9,8 @@ import UserPageSignUp from "./pages/UserPageSignUp";
 import ReviewHome from "./pages/ReviewHome";
 
 import Header from "./components/UI/Header";
-import UserForm from "./components/UserForm";
-import MyReviewList from "./components/MyReviewList";
+import UserForm from "./components/Review/UserForm";
+import MyReviewList from "./components/Review/MyReviewList";
 import { userActions } from "./store/user-slice";
 
 

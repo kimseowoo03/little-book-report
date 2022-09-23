@@ -1,7 +1,7 @@
-import UserSignIn from "../components/UserSignIn";
-import UserSignUp from "../components/UserSignUp";
+import UserSignIn from "../components/accounts/UserSignIn";
+import UserSignUp from "../components/accounts/UserSignUp";
 
-import classes from "./UserPageSignUp.module.css"
+import classes from "./UserPageSignUp.module.css";
 
 const UserPageSignUp = () => {
   return(

@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { auth } from "../firebase-config";
+import { auth } from "../../firebase-config";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 import classes from "./UserSignUp.module.css";
 
 const UserSignUp = () => {

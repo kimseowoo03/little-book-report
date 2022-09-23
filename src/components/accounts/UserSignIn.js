@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { auth } from "../firebase-config";
+import { auth } from "../../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 import classes from "./UserSignIn.module.css";
 
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Review from "./Review";
-import { fetchReviewList } from "../store/input-actions";
+import { fetchReviewList } from "../../store/input-actions";
 
 import classes from "./UserReviewList.module.css";
 
