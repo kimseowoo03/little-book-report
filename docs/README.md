@@ -6,7 +6,6 @@
 - 상태관리할 때 리액트 훅이 아닌 리덕스를 배우고 리덕스 툴킷을 활용하여 보다 쉽게 구현
 - React-router v6 를 사용하여 SPA 경험
 
----
 
 ## **구조 설명서**
 src
@@ -62,7 +61,6 @@ src
 
 **store**- RTK(ReduxToolKit)를 사용하여 상태 관리 폴더
 
----
 
 ## **파이어베이스에서 사용하는 기능에 대한 레퍼런스(참고자료) 나열 및 사용내역 정리**
 
@@ -112,7 +110,6 @@ https://firebase.google.com/docs/auth/web/manage-users)
 
 [공식 문서](https://pool-pantydraco-4e9.notion.site/hosting-5208ab32e0c2434bb3b1dfcb9ec856ea)
 
----
 
 ## **폼 데이터 코딩할 때 준수할 훅 사용 패턴 가이드**
 (docs/images/FormDataGudie/FormDataCode.png)
@@ -135,7 +132,6 @@ useUserForm 훅이 매개변수로 받는 inputValueIsvaildFun는 빈값인지 �
 **inputValueIsvalid** -불리언에 따라 input이 빈 값이라면 등록하지 못하게 합니다.
 (docs/images/FormDataGuide/inputValueIsvalid.png)
 
----
 
 ## **디스패치시에 준수할 코드 패턴 가이드**
 (아래 가이드 말고는 매개변수 없이 사용해도 됩니다) 
