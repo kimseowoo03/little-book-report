@@ -113,7 +113,7 @@ https://firebase.google.com/docs/auth/web/manage-users)
 
 
 ## **폼 데이터 코딩할 때 준수할 훅 사용 패턴 가이드**
-![FormDataCode](./images/FormDataGudie/FormDataCode.png)
+![FormDataCode](./images/FormDataGuide/FormDataCode.png)
 
 useUserForm 훅이 매개변수로 받는 inputValueIsvaildFun는 빈값인지 확인하는 단순 함수입니다.
 ![inputValueIsvaildFun](./images/FormDataGuide/inputValueIsvaildFun.png)
