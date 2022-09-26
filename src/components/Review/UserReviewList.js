@@ -7,18 +7,12 @@ import { fetchReviewList } from "../../store/input-actions";
 import classes from "./UserReviewList.module.css";
 
 const UsersReviewList = () => {
-  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-
-  let userId;
-  if (user) {
-    userId = user.uid;
-  }
 
   useEffect(() => {
     //firebase에서 GET
-    dispatch(fetchReviewList(userId));
-  }, [dispatch, userId]);
+    dispatch(fetchReviewList());
+  }, [dispatch]);
   const reviewList = useSelector((state) => state.input.reviewList);
   return (
     <div className={classes.list_box}>
