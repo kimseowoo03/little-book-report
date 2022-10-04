@@ -20,21 +20,29 @@ REACT_APP_FIREBASE_API_KEY= 'ENTER YOUR API'
 ```
 ## 프로젝트 사용 방법
 [프로젝트 로그인]
+
 Email: kimseowoo03@nav.com
+
 password: 123456789
 
-Firebase를 처음 사용해보시는 분들은 [docs](https://github.com/kimseowoo03/react-http-miniproject/tree/master/)참고해주세요!
+>Firebase를 처음 사용해보시는 분들은 [docs](https://github.com/kimseowoo03/react-http-miniproject/tree/master/)참고해주세요!
 
 ## 참고자료
 사용 방법들은 Firebase 공식문서 또는 유데미 리액트 강의를 참고했습니다.
-Authentication
+
+**Authentication**
+
 [비밀번호 인증](https://firebase.google.com/docs/auth/web/password-auth)
+
 [사용자 관리](https://firebase.google.com/docs/auth/web/manage-users)
 
-FIrestore
+**FIrestore**
+
 [Cloud Firestore 시작하기](https://firebase.google.com/docs/firestore/quickstart?hl=ko)
 
-Hosting
+**Hosting**
+
 [유데미 리액트 강의](https://www.udemy.com/course/best-react/)
+
 ---
 프로젝트의 구조, 훅 사용 패턴 가이드, 디스패치에 준수할 코드 패턴 가이드 [docs](https://github.com/kimseowoo03/react-http-miniproject/tree/master/docs)를 참고해주세요!

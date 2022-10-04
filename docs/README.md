@@ -1,61 +1,107 @@
 ## 구조 설명서
 src
-  - components
-    - Review
-      - MyReviewList.js
-      - Review.js
-      - Review.module.css
-      - UserForm.js
-      - UserForm.module.css
-      - UserReviewList.js
-      - UserReviewList.module.css
-    - UI
-      - Button.js
-      - Button.module.css
-      - Header.js
-      - Header.module.css
-      - Notification.js
-      - Notification.module.css
-    - accounts
-      - UserSignIn.js
-      - UserSignIn.module.css
-      - UserSignUp.js
-      - UserSignUp.module.css
-  - hooks
-    - useUserForm.js
-  - pages
-    - Home.js
-    - Home.module.css
-    - ReviewHome.js
-    - ReviewHome.module.css
-    - UserPageSignUp.js
-    - UserPageSignUp.module.css
-  - store
-    - input-actions.js
-    - input-slice.js
-    - store.js
-    - ui-slice.js
-    - user-slice.js
-  - App.js
-  - App.module.css
-  - firebase-config.js
-  - index.js
+
+ ┣ components
+
+ ┃ ┣ Review
+
+ ┃ ┃ ┣ MyReviewList.js
+
+ ┃ ┃ ┣ Review.js
+
+ ┃ ┃ ┣ Review.module.css
+
+ ┃ ┃ ┣ UserForm.js
+
+ ┃ ┃ ┣ UserForm.module.css
+
+ ┃ ┃ ┣ UserReviewList.js
+
+ ┃ ┃ ┗ UserReviewList.module.css
+
+ ┃ ┣ UI
+
+ ┃ ┃ ┣ Button.js
+
+ ┃ ┃ ┣ Button.module.css
+
+ ┃ ┃ ┣ Header.js
+
+ ┃ ┃ ┣ Header.module.css
+
+ ┃ ┃ ┣ Notification.js
+
+ ┃ ┃ ┗ Notification.module.css
+
+ ┃ ┗ accounts
+
+ ┃ ┃ ┣ UserSignIn.js
+
+ ┃ ┃ ┣ UserSignIn.module.css
+
+ ┃ ┃ ┣ UserSignUp.js
+
+ ┃ ┃ ┗ UserSignUp.module.css
+
+ ┣ hooks
+
+ ┃ ┗ useUserForm.js
+
+ ┣ pages
+
+ ┃ ┣ Home.js
+
+ ┃ ┣ Home.module.css
+
+ ┃ ┣ ReviewHome.js
+
+ ┃ ┣ ReviewHome.module.css
+
+ ┃ ┣ UserPageSignUp.js
+
+ ┃ ┗ UserPageSignUp.module.css
+
+ ┣ store
+
+ ┃ ┣ input-actions.js
+
+ ┃ ┣ input-slice.js
+
+ ┃ ┣ store.js
+
+ ┃ ┣ ui-slice.js
+
+ ┃ ┗ user-slice.js
+
+ ┣ App.js
+
+ ┣ App.module.css
+
+ ┣ firebase-config.js
+ 
+ ┗ index.js
 
 **components** -> 페이지를 구성할 컴포넌트
+
 ㄴReview - 감상평 페이지에 필요한 기능 폴더
+
 ㄴUI
+
 ㄴaccount - 회원가입, 로그인 페이지 폴더
+
 **pages**- react-router elements에 사용될 컴포넌트
+
 **hooks**- UserForm의 input을 커스텀 훅을 이용한 폴더
+
 **store**- RTK(ReduxToolKit)를 사용하여 상태 관리 폴더
 
 ## 파이어베이스에서 사용하는 기능에 대한 레퍼런스
 
-`UserSignUp.js`- 회원가입(createUserWithEmailAndPassword)
+`UserSignUp.js` - 회원가입(createUserWithEmailAndPassword)
 사용자가 입력한 값을 ref로 읽어와 매개변수에 넣어주면 전달되어, 신규 계정을 생성한다.
 ![createUserWithEmailAndPassword](https://user-images.githubusercontent.com/102151860/193737171-fbc4d2ae-94db-474a-b010-3a0cd0029bda.png)
 
-`Header.js`- 로그아웃(signOut)
+`Header.js` - 로그아웃(signOut)
 로그아웃 하면서, dispath로 현재 사용자를 담고 있는 상태도 null로 설정하였다.
 ![signOut](https://user-images.githubusercontent.com/102151860/193738732-0757c066-4ad7-47e1-a19c-975b37011417.png)
 
@@ -69,9 +115,11 @@ src
 2. 값을 업데이트 해준 후 반환해 줍니다.
 
 **inputFormIsvalid** - 불리언에 따라 input의 상태를 사용자에게 알려줍니다.
+
 ![inputFormIsvaild](https://user-images.githubusercontent.com/102151860/193738732-0757c066-4ad7-47e1-a19c-975b37011417.png)
 
 **inputValueIsvalid** -불리언에 따라 input이 빈 값이라면 등록하지 못하게 합니다.
+
 ![inputValueIsvalid](https://user-images.githubusercontent.com/102151860/193738732-0757c066-4ad7-47e1-a19c-975b37011417.png)
 
 
@@ -83,11 +131,13 @@ src
 Firestore Database에서 사용자의 데이터를 가져올 때 쿼리를 사용하여 해당 로그인한 사용자의 uid를 일치한 것을 가져옵니다. 현재 로그인한 사용자의 정보를 가져와야 하므로 사용자의 id를 꼭 매개변수로 넣어주어야 합니다.
 ![myReviewList](https://user-images.githubusercontent.com/102151860/193738732-0757c066-4ad7-47e1-a19c-975b37011417.png)
 
+
 `UserForm.js`
 유저가 입력한 값과 유저의 Id를 꼭 매개변수로 넣어주어야 합니다(순서는 상관없습니다).
 Firestore Database에 사용자의 데이터를 저장할 때, 유저가 입력한 값들이 필요하고
 나중에 해당 사용자의 데이터만 불러오려면 유저의 id가 필요합니다.
 ![userForm](https://user-images.githubusercontent.com/102151860/193738732-0757c066-4ad7-47e1-a19c-975b37011417.png)
+
 
 `App.js`
 로그인한 사용자의 정보를 가지고 있어야 하기 떄문에 currentUser 객체에 사용자의 정보를 담아서
