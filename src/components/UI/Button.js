@@ -1,4 +1,4 @@
-import classes from "./Button.module.css"
+import classes from "../../styles/Button.module.scss"
 
 const Button = ({children, ...rest}) => {
   return <button className={classes.button} {...rest}>{children}</button>;
