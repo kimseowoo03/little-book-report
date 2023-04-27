@@ -1,24 +1,25 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Review from "./Review";
-import { fetchReviewList } from "../../store/input-actions";
+import ReviewItem from "./ReviewItem";
+import { fetchReviewList } from "../../store/review-actions";
 
-import classes from "./UserReviewList.module.css";
+import classes from "../../styles/UserReviewList.module.scss"
 
 const UsersReviewList = () => {
   const dispatch = useDispatch();
+  const { reviewList, loading } = useSelector((state) => state.review);
 
   useEffect(() => {
     //firebase에서 GET
     dispatch(fetchReviewList());
   }, [dispatch]);
-  const reviewList = useSelector((state) => state.input.reviewList);
+
   return (
-    <div className={classes.list_box}>
+    <div className={classes.content}>
       <ul className={classes.ul}>
-        {reviewList.map((review) => (
-          <Review key={review.id} review={review} />
+        {!loading && reviewList.map((review) => (
+          <ReviewItem key={review.id} review={review} />
         ))}
       </ul>
     </div>
