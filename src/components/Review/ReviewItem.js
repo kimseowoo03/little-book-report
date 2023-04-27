@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from './Review.module.css';
+import classes from "../../styles/ReviewItem.module.scss";
 
 const Review = ({ review }) => {
   return(
