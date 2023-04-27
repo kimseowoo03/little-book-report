@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Review from "./Review";
-import { fetchMyReviewList } from "../../store/input-actions";
+import ReviewItem from "./ReviewItem";
+import { fetchMyReviewList } from "../../store/review-actions";
+
+import classes from "../../styles/UserReviewList.module.scss"
 
 const MyReviewList = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const reviewList = useSelector((state) => state.input.reviewList);
+  const { reviewList, loading } = useSelector((state) => state.review);
 
   const [once, setOnce] = useState(true);
   let userId;
@@ -23,11 +25,13 @@ const MyReviewList = () => {
     }
   }, [dispatch, userId, once]);
   return (
-    <>
-      {reviewList.map((review) => (
-        <Review key={review.id} review={review} />
-      ))}
-    </>
+    <div className={classes.content}>
+      <ul className={classes.ul}>
+        {!loading && reviewList.map((review) => (
+          <ReviewItem key={review.id} review={review} />
+        ))}
+      </ul>
+    </div>
   );
 };
 
