@@ -5,7 +5,7 @@ import { db } from "../firebase-config";
 
 const collectionRef = collection(db, "product");
 export const fetchReviewList = createAsyncThunk(
-  "input-slice/fetchReviewList",
+  "review-slice/fetchReviewList",
   async () => {
     const data = await getDocs(collectionRef);
     const reviewList = data.docs.map((doc) => ({id: doc.id, ...doc.data() }));
@@ -14,7 +14,7 @@ export const fetchReviewList = createAsyncThunk(
 );
 
 export const fetchMyReviewList = createAsyncThunk(
-  "input-slice/fetchMyReviewList",
+  "review-slice/fetchMyReviewList",
   async (uid) => {
     const q = query(collectionRef, where("uid", "==", `${uid}` ));
     //쿼리 실행
@@ -34,7 +34,7 @@ export const fetchMyReviewList = createAsyncThunk(
 );
 
 export const sendReviewList = createAsyncThunk(
-  "input-slice/sendReviewList",
+  "review-slice/sendReviewList",
   async (reviewValue) => {
     await addDoc(collectionRef, {
       title: reviewValue.titleInputValue,
