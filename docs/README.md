@@ -1,99 +1,50 @@
 ## 구조 설명서
+```bash
 src
-
  ┣ components
-
  ┃ ┣ Review
-
  ┃ ┃ ┣ MyReviewList.js
-
- ┃ ┃ ┣ Review.js
-
- ┃ ┃ ┣ Review.module.css
-
+ ┃ ┃ ┣ ReviewItem.js
  ┃ ┃ ┣ UserForm.js
-
  ┃ ┃ ┣ UserForm.module.css
-
- ┃ ┃ ┣ UserReviewList.js
-
- ┃ ┃ ┗ UserReviewList.module.css
-
+ ┃ ┃ ┗ UserReviewList.js
  ┃ ┣ UI
-
  ┃ ┃ ┣ Button.js
-
- ┃ ┃ ┣ Button.module.css
-
  ┃ ┃ ┣ Header.js
-
- ┃ ┃ ┣ Header.module.css
-
+ ┃ ┃ ┣ Loading.js
  ┃ ┃ ┣ Notification.js
-
  ┃ ┃ ┗ Notification.module.css
-
  ┃ ┗ accounts
-
  ┃ ┃ ┣ UserSignIn.js
-
  ┃ ┃ ┣ UserSignIn.module.css
-
  ┃ ┃ ┣ UserSignUp.js
-
  ┃ ┃ ┗ UserSignUp.module.css
-
  ┣ hooks
-
  ┃ ┗ useUserForm.js
-
  ┣ pages
-
  ┃ ┣ Home.js
-
  ┃ ┣ Home.module.css
-
  ┃ ┣ ReviewHome.js
-
- ┃ ┣ ReviewHome.module.css
-
- ┃ ┣ UserPageSignUp.js
-
- ┃ ┗ UserPageSignUp.module.css
-
+ ┃ ┣ SignIn.js
+ ┃ ┗ SignUp.js
  ┣ store
-
- ┃ ┣ input-actions.js
-
- ┃ ┣ input-slice.js
-
+ ┃ ┣ review-actions.js
+ ┃ ┣ review-slice.js
  ┃ ┣ store.js
-
  ┃ ┣ ui-slice.js
-
  ┃ ┗ user-slice.js
-
+ ┣ styles
+ ┃ ┣ Button.module.scss
+ ┃ ┣ Header.module.scss
+ ┃ ┣ Loading.module.scss
+ ┃ ┣ ReviewHome.module.scss
+ ┃ ┣ ReviewItem.module.scss
+ ┃ ┗ UserReviewList.module.scss
  ┣ App.js
-
- ┣ App.module.css
-
  ┣ firebase-config.js
- 
- ┗ index.js
-
-**components** -> 페이지를 구성할 컴포넌트
-
-ㄴReview - 감상평 페이지에 필요한 기능 폴더
-
-ㄴUI
-
-ㄴaccount - 회원가입, 로그인 페이지 폴더
-
-**pages**- react-router elements에 사용될 컴포넌트
-
-**hooks**- UserForm의 input을 커스텀 훅을 이용한 폴더
-
-**store**- RTK(ReduxToolKit)를 사용하여 상태 관리 폴더
+ ┣ index.js
+ ┗ index.scss
+```
 
 ## 파이어베이스에서 사용하는 기능에 대한 레퍼런스
 
