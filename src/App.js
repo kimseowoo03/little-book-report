@@ -5,8 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import ReviewHome from "./pages/ReviewHome";
-import SignInPage from "./pages/SignIn";
-import SignUpPage from "./pages/SignUp";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 import Header from "./components/UI/Header";
 import UserForm from "./components/Review/UserForm";

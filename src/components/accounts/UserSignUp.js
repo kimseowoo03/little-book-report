@@ -41,7 +41,7 @@ const UserSignUp = () => {
         <label>Password</label>
         <input type="password" ref={passwordRef} />
       </div>
-      <Button type="submit">회원가입</Button>
+      <button type="submit">회원가입</button>
     </form>
   );
 };
