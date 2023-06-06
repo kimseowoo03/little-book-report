@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { sendReviewList } from "./input-actions";
+import { sendReviewList } from "./review-actions";
 
 const uiSlice = createSlice({
   name: "ui",

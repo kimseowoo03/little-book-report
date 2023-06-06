@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import useUserForm from "../../hooks/useUserForm";
-import { sendReviewList } from "../../store/input-actions";
+import { sendReviewList } from "../../store/review-actions";
 
 import classes from "./UserForm.module.css";
 
