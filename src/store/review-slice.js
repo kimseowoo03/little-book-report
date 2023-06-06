@@ -15,7 +15,6 @@ const reviewSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchReviewList.fulfilled, (state, action) => {
-        console.log("[review-slice/fetchReviewList] Fetch complete");
         state.reviewList = action.payload;
         state.loading = false;
       });
@@ -24,8 +23,8 @@ const reviewSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchMyReviewList.fulfilled, (state, action) => {
-        console.log("[review-slice/fetchMyReviewList] Fetch complete");
         state.reviewList = action.payload;
+        state.loading = false;
       });
   },
 });
