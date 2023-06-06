@@ -8,7 +8,8 @@ import uiSlice from "./ui-slice";
 
 const store = configureStore({
   reducer: { review: reviewSlice, ui: uiSlice, user: userSlice },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}).concat(logger),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }).concat(logger),
 });
 
 export default store;
