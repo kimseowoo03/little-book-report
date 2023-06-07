@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { auth } from "../../firebase-config";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import Button from "../UI/Button";
-import classes from "./UserSignUp.module.css";
+import style from "../../styles/UserSign.module.scss";
 
 const UserSignUp = () => {
   const emailRef = useRef();
@@ -28,21 +28,25 @@ const UserSignUp = () => {
     }
   };
   return (
-    <form onSubmit={submitHandler} className={classes.form}>
-      <div>
-        <label>name</label>
+     <div className={style.container}>
+      <h2>회원가입</h2>
+    <form onSubmit={submitHandler} className={style.form}>
+      <div className={style["input-box"]}>
+        <label>이름</label>
         <input type="text" ref={nameRef} />
       </div>
-      <div>
-        <label>Email</label>
+      <div className={style["input-box"]}>
+        <label>이메일</label>
         <input type="email" ref={emailRef} />
       </div>
-      <div>
-        <label>Password</label>
-        <input type="password" ref={passwordRef} />
+      <div className={style["input-box"]}>
+        <label>비밀번호</label>
+        <input type="password" ref={passwordRef} autoComplete="off"/>
       </div>
-      <button type="submit">회원가입</button>
+      <Button type="submit">회원가입</Button>
     </form>
+     <p>회원이신가요? <Link to="/signin">로그인</Link></p>
+    </div>
   );
 };
 

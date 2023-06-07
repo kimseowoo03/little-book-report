@@ -1,13 +1,11 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { auth } from "../../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 import Button from "../UI/Button";
-import classes from "./UserSignIn.module.css";
-
-
+import style from "../../styles/UserSign.module.scss";
 
 const UserSignIn = () => {
   const emailRef = useRef();
@@ -28,17 +26,21 @@ const UserSignIn = () => {
   };
 
   return (
-    <form onSubmit={signInHandler} className={classes.form}>
-      <div>
-        <label>Email</label>
-        <input type="email" ref={emailRef} />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" ref={passwordRef} />
-      </div>
-      <Button type="submit">로그인</Button>
-    </form>
+    <div className={style.container}>
+      <h2>로그인</h2>
+      <form onSubmit={signInHandler} className={style.form}>
+        <div className={style["input-box"]}>
+          <label>이메일</label>
+          <input type="email" ref={emailRef} />
+        </div>
+        <div className={style["input-box"]}>
+          <label>비밀번호</label>
+          <input type="password" ref={passwordRef} autoComplete="off" />
+        </div>
+        <Button type="submit">로그인</Button>
+      </form>
+      <p>회원이 아니신가요? <Link to="/signup">회원가입</Link></p>
+    </div>
   );
 };
 
