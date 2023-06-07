@@ -8,7 +8,7 @@ const useUserForm = (inputValueIsvalidFun) => {
   const [inputTouched, setInputTouched] = useState(false);
 
   const inputValueIsvalid = inputValueIsvalidFun(inputValue);
-  const inputFormIsvalid = inputValueIsvalid && inputTouched;
+  const inputFormIsvalid = !inputValueIsvalid && inputTouched;
 
   const onChangeHandler = (event) => {
     setInputValue(event.target.value);

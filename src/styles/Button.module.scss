@@ -16,3 +16,7 @@
 .button:hover{
   background: #BFF319;
 }
+.button:disabled {
+  background-color: #c3c3c3;
+  cursor: default;
+}

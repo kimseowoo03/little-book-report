@@ -9,7 +9,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 
 import Header from "./components/UI/Header";
-import UserForm from "./components/Review/UserForm";
+import ReportWrite from "./components/Review/ReportWrite";
 
 import { userActions } from "./store/user-slice";
 
@@ -43,7 +43,7 @@ function App() {
         <Route path="/" element={<ReviewHome />} />
         <Route path="signin" element={<SignInPage />} />
         <Route path="signup" element={<SignUpPage />} />
-        <Route path="write" element={<UserForm />} />
+        <Route path="write" element={<ReportWrite />} />
       </Routes>
     </div>
   );

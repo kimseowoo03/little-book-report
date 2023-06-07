@@ -31,7 +31,7 @@ const ReviewHome = () => {
 
   const myReviewHandler = () => {
     if (!user) {
-      navigate("/signup");
+      navigate("/signin");
       alert("로그인해주세요 !");
       return;
     }
